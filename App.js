@@ -1,10 +1,36 @@
 import {StatusBar} from 'expo-status-bar';
-import React from 'react';
+import React, {Component} from 'react';
 import {StyleSheet, Text, View, Image} from 'react-native';
 
-import { Chart, Line, Area, HorizontalAxis, VerticalAxis } from 'react-native-responsive-linechart'
+import { Chart, Line, Area, HorizontalAxis, VerticalAxis } from 'react-native-responsive-linechart';
 
+import stats from "./stats";
 
+class Table extends Component {
+    renderTableData() {
+        return stats.map((stat, index) => {
+           const { key, value, } = stat //destructuring
+           return (
+              <tr key={key}>
+                 <td>{value}</td>
+                
+              </tr>
+           )
+        })
+     }
+    render() { //Whenever our class runs, render method will be called automatically, it may have already defined in the constructor behind the scene.
+        return (
+            <div>
+            <h1 id='title'>React Dynamic Table</h1>
+            <table id='students'>
+               <tbody>
+                  {this.renderTableData()}
+               </tbody>
+            </table>
+         </div>
+        )
+     }
+} 
 
 export default function App() {
     return (
@@ -12,6 +38,10 @@ export default function App() {
            <Text style={
                 styles.title
             }>Stats / Charts</Text>
+            <View style={{
+                wdith:"95%",
+
+            }}>
             <Chart
   style={{ height: "40vw", width: "70vw" }}
   data={[
@@ -26,7 +56,6 @@ export default function App() {
     { x: 19/11/2011, y: 112 },
     { x: 10/11/2011, y: 14 },
     { x: 22/11/2011, y: 12 },
-    { x: 23/11/2011, y: 131.5 },
     { x: 24/11/2011, y: 18 },
   ]}
   //padding={{ left: 40, bottom: 20, right: 20, top: 20 }}
@@ -37,8 +66,8 @@ export default function App() {
   <HorizontalAxis tickCount={5} />
   <Area theme={{ gradient: { from: { color: '#eb9486' }, to: { color: '#ffa502', opacity: 0.4 } }}} />
   <Line theme={{ stroke: { color: '#eb9486', width: 5 }, scatter: { default: { width: 4, height: 4, rx: 2 }} }} />
-</Chart>
-
+</Chart></View>
+<Table></Table>
         </View>
     );
 }
