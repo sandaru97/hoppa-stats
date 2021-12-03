@@ -6,30 +6,36 @@ import { Chart, Line, Area, HorizontalAxis, VerticalAxis } from 'react-native-re
 
 import stats from "./stats";
 
+class RenderRow extends Component {
+    constructor(props) {
+        super(props);
+      }
+    render() {
+
+    return     <td key={this.props.data[key]}>{this.props.data[key]}</td>;
+    }
+}
 class Table extends Component {
-    renderTableData() {
-        return stats.map((stat, index) => {
-           const { key, value, } = stat //destructuring
-           return (
-              <tr key={key}>
-                 <td>{value}</td>
-                
-              </tr>
-           )
-        })
-     }
-    render() { //Whenever our class runs, render method will be called automatically, it may have already defined in the constructor behind the scene.
+
+
+    render() {
+        var html=[];
+
+        for(var i = 0; i < stats.length; i++) {
+            var obj = stats[i];
+        
+//html={html+<tr>{obj.key}</tr>};
+html.push(<tr  key={obj.key}>{obj.key}<td>{obj.value}</td></tr>);
+
+        }
+        //html=html+"</table>";
         return (
-            <div>
-            <h1 id='title'>React Dynamic Table</h1>
-            <table id='students'>
-               <tbody>
-                  {this.renderTableData()}
-               </tbody>
-            </table>
-         </div>
-        )
-     }
+     <div>
+         <table>{html}</table>
+     </div>
+        
+        );
+        }
 } 
 
 export default function App() {
