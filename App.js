@@ -1,6 +1,6 @@
 import {StatusBar} from 'expo-status-bar';
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, Image} from 'react-native';
+import {Button,StyleSheet, Text, View, Image} from 'react-native';
 
 import { Chart, Line, Area, HorizontalAxis, VerticalAxis } from 'react-native-responsive-linechart';
 
@@ -55,21 +55,21 @@ export default function App() {
                 styles.title
             }>Stats / Charts</Text>
             <Chart
-  style={{ height: 400, width: "100%", }}
+  style={{ height: 200, width: "100%",marginTop:"70px","margin-bottom":"0px" }}
   data={[
-    { x: -2, y: 15 },
+    { x: -2, y: 1 },
     { x: -1, y: 10 },
     { x: 0, y: 12 },
     { x: 1, y: 7 },
     { x: 2, y: 6 },
     { x: 3, y: 8 },
-    { x: 4, y: 10 },
+    { x: 4, y: 20 },
     { x: 5, y: 8 },
     { x: 6, y: 12 },
     { x: 7, y: 14 },
     { x: 8, y: 12 },
     { x: 9, y: 13.5 },
-    { x: 10, y: 18 },
+    { x: 10, y: 20 },
   ]}
   //padding={{ left: 40, bottom: 20, right: 20, top: 20 }}
   xDomain={{ min: -2, max: 10 }}
@@ -77,22 +77,24 @@ export default function App() {
 >
   <VerticalAxis tickCount={11} theme={{ labels: { formatter: (v) => v.toFixed(2) } }} />
   <HorizontalAxis tickCount={5} />
-  <Area theme={{ gradient: { from: { color: '#ffa502' }, to: { color: '#ffa502', opacity: 0.4 } }}} />
-  <Line theme={{ stroke: { color: '#ffa502', width: 5 }, scatter: { default: { width: 4, height: 4, rx: 2 }} }} />
+  <Area theme={{ gradient: { from: { color: '#eb9486' }, to: { color: '#ffa502', opacity: 0.4 } }}} />
+  <Line theme={{ stroke: { color: '#eb9486', width: 5 }, scatter: { default: { width: 4, height: 4, rx: 2 }} }} />
 </Chart></View><br/>
-            <View style={{
-                wdith:"100%",
-                justifyContent:"center",
-
-            }}><br/>
-            <View 
-              style={{ flex:1,height: "40vw", width: "100%",position:"static", flex:1,}}
-              >
+           
+            
         
-</View></View><br/>
+
+
 <View style={{paddingTop:"10px"}}>
 <Table style={{width:"100%",flex:1,}}></Table>
         </View>
+        <div style={{"position":"fixed",
+        "width":"100%",
+        "height":"10px",
+        
+        "background":"#eb9486",
+        "bottom":"0px",
+        }}></div>
         </View>
     );
 }
